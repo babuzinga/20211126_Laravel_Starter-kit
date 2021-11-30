@@ -14,8 +14,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [UserController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-  return view('about');
-});
+Route::get('/about', function () { return view('about'); })->name('about');
