@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
   //
-  public function index()
+  public function users()
   {
     $users = User::orderBy('id')->paginate(10);
-    return view('main', compact('users'));
+    return view('users', compact('users'));
   }
 }

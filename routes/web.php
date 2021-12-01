@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [UserController::class, 'index'])->name('home');
+Route::get('/', [UserController::class, 'users'])->name('users');
 
+Route::get('/users/{user}', function (User $user) { return view('user', compact('user')); })->name('user');
 Route::get('/about', function () { return view('about'); })->name('about');
