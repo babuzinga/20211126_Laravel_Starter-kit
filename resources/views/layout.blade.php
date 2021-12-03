@@ -20,8 +20,9 @@
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="{{route('users')}}" class="nav-link active" aria-current="page">Users</a></li>
-            <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="{{ route('users') }}" class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page">Users</a></li>
+            <li class="nav-item"><a href="{{ route('feedback') }}" class="nav-link {{ (request()->is('feedback')) ? 'active' : '' }}">Feedback</a></li>
+            <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
         </ul>
     </header>
 </div>

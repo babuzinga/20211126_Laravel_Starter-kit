@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('title')
-    {{$user->getName()}}
+    {{ $user->getName() }}
 @endsection
 
 @section('content')
-    {{$user->getEmail()}}
+    {{ $user->getEmail() }}
 @endsection

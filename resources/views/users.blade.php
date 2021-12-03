@@ -18,15 +18,15 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <th scope="row">{{$user->id}}</th>
-                <td><a href="{{route('user', ['user' => $user])}}">{{$user->name}}</a></td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->created_at}}</td>
+                <th scope="row">{{ $user->id }}</th>
+                <td><a href="{{ route('user', ['user' => $user]) }}">{{ $user->name }}</a></td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->created_at }}</td>
             </tr>
         @endforeach
         </tbody>
     </table>
-    {{$users->links()}}
+    {{ $users->links() }}
 @else
     Пользователи не найдены
 @endif
