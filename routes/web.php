@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,20 @@ use App\Models\User;
 |
 */
 
-Route::get('/', [UserController::class, 'users'])->name('users');
-Route::get('/users/{user}', function (User $user) { return view('user', compact('user')); })->name('user');
-Route::get('/about', function () { return view('about'); })->name('about');
-Route::get('/feedback', function () { return view('feedback'); })->name('feedback');
-Route::post('/feedback/save', [MainController::class, 'feedback_save']);
+Route::get('/',               function () { return view('main/index'); })->name('index');
+Route::get('/about',          function () { return view('main/about'); })->name('about');
+Route::get('/feedback',       function () { return view('main/feedback'); })->name('feedback');
+Route::post('/feedback',      [MainController::class, 'feedback']);
+
+Route::name('user.')->group(function () {
+  Route::get('/users',            [UserController::class, 'users'])->name('users');
+  Route::get('/user/{user}',      function (User $user) { return view('user/account', compact('user')); })->name('user');
+  Route::get('/register',         function () { return (Auth::check()) ? redirect(route('user.home')) : view('user/register'); })->name('register');
+  Route::post('/register',        [UserController::class, 'register']);
+  Route::get('/login',            function () { return (Auth::check()) ? redirect(route('user.home')) : view('user/login'); })->name('login');
+  Route::post('/login',           [UserController::class, 'login']);
+  Route::get('/home',             function () { return view('user/home'); })->middleware('auth')->name('home');
+});
+
+
+

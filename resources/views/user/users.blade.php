@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('title')
     Users
@@ -16,10 +16,10 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($users as $key =>$user)
             <tr>
-                <th scope="row">{{ $user->id }}</th>
-                <td><a href="{{ route('user', ['user' => $user]) }}">{{ $user->name }}</a></td>
+                <th scope="row">{{ ++$key }}</th>
+                <td><a href="{{ route('user.user', ['user' => $user->id]) }}">{{ $user->name }}</a></td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->created_at }}</td>
             </tr>
