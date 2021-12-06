@@ -11,17 +11,26 @@
 
     <div class="mb-3">
       <label for="exampleTitle" class="form-label">Title</label>
-      <input name="title" type="text" class="form-control" id="exampleTitle" value="{{ old('title') }}">
+      <input
+          name="title"
+          type="text"
+          class="form-control @error('title') is-invalid @enderror"
+          id="exampleTitle"
+          value="{{ old('title') }}"
+      >
       @error('title')
-      <div class="alert alert-danger">{{ $title }}</div>
+      <div class="invalid-feedback">{{ $message }}</div>
       @enderror
     </div>
     <div class="form-floating mb-3">
-      <textarea name="task" class="form-control" placeholder="Leave a text here"
-                id="floatingTextarea">{{ old('task') }}</textarea>
+      <textarea
+          name="task"
+          class="form-control @error('task') is-invalid @enderror"
+          placeholder="Leave a text here"
+          id="floatingTextarea">{{ old('task') }}</textarea>
       <label for="floatingTextarea">Task</label>
       @error('task')
-      <div class="alert alert-danger">{{ $task }}</div>
+      <div class="invalid-feedback">{{ $message }}</div>
       @enderror
     </div>
     <button type="submit" class="btn btn-primary">Create</button>

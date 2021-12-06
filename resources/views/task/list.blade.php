@@ -17,23 +17,23 @@
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
+        <th scope="col">Title</th>
+        <th scope="col">Task</th>
         <th scope="col">created_at</th>
       </tr>
       </thead>
       <tbody>
-      @foreach($users as $key =>$user)
+      @foreach($tasks as $key =>$task)
         <tr>
           <th scope="row">{{ ++$key }}</th>
-          <td><a href="{{ route('user.user', ['user' => $user->id]) }}">{{ $user->name }}</a></td>
-          <td>{{ $user->email }}</td>
-          <td>{{ $user->created_at }}</td>
+          <td><a href="{{ route('task.view', ['task' => $task->id]) }}">{{ $task->title }}</a></td>
+          <td>{{ $task->task }}</td>
+          <td>{{ $task->created_at }}</td>
         </tr>
       @endforeach
       </tbody>
     </table>
-    {{ $users->links() }}
+    {{ $tasks->links() }}
   @else
     Tasks not found
   @endif
