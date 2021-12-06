@@ -28,6 +28,8 @@
                               class="nav-link {{ (request()->is('feedback')) ? 'active' : '' }}">Feedback</a></li>
       <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
       @auth
+      <li class="nav-item"><a href="{{ route('user.home') }}"
+                              class="nav-link">Home</a></li>
       <li class="nav-item"><a href="{{ route('user.logout') }}"
                               class="nav-link">Logout</a></li>
       @else

@@ -22,4 +22,11 @@ class MainController extends Controller
     $feedback->save();
     return redirect()->route('feedback');
   }
+
+  public function settings()
+  {
+    $this->authorize('edit_settings');
+
+    echo 'settings';
+  }
 }
