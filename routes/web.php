@@ -29,6 +29,7 @@ Route::name('user.')->group(function () {
   Route::post('/register',        [UserController::class, 'register']);
   Route::get('/login',            function () { return (Auth::check()) ? redirect(route('user.home')) : view('user/login'); })->name('login');
   Route::post('/login',           [UserController::class, 'login']);
+  Route::get('/logout',           [UserController::class, 'logout'])->name('logout');
   Route::get('/home',             function () { return view('user/home'); })->middleware('auth')->name('home');
 });
 

@@ -27,10 +27,15 @@
       <li class="nav-item"><a href="{{ route('feedback') }}"
                               class="nav-link {{ (request()->is('feedback')) ? 'active' : '' }}">Feedback</a></li>
       <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+      @auth
+      <li class="nav-item"><a href="{{ route('user.logout') }}"
+                              class="nav-link">Logout</a></li>
+      @else
       <li class="nav-item"><a href="{{ route('user.register') }}"
-                              class="nav-link {{ (request()->is('register')) ? 'active' : '' }}">Sign In</a></li>
+                              class="nav-link {{ (request()->is('register')) ? 'active' : '' }}">Register</a></li>
       <li class="nav-item"><a href="{{ route('user.login') }}"
-                              class="nav-link {{ (request()->is('login')) ? 'active' : '' }}">Sign Up</a></li>
+                              class="nav-link {{ (request()->is('login')) ? 'active' : '' }}">Login</a></li>
+      @endauth
     </ul>
   </header>
 </div>
