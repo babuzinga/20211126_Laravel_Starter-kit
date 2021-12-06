@@ -1,11 +1,18 @@
 @extends('layouts.layout')
 
 @section('title')
-  Users
+  Tasks
 @endsection
 
 @section('content')
-  @if(count($users))
+  <h1>Tasks</h1>
+
+  <div class="mt-3 mb-3">
+    <a href="{{ route('task.create') }}" class="btn btn-primary mb-3">Create</a>
+  </div>
+
+
+  @if(count($tasks))
     <table class="table table-striped">
       <thead>
       <tr>
@@ -28,6 +35,6 @@
     </table>
     {{ $users->links() }}
   @else
-    Пользователи не найдены
+    Tasks not found
   @endif
 @endsection

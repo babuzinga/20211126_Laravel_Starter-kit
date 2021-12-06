@@ -54,6 +54,7 @@ class UserPolicy
     public function update(User $user, User $model)
     {
         //
+      return $user->isAdmin() || $user->id == $model->id;
     }
 
     /**

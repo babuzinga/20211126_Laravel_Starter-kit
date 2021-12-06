@@ -10,13 +10,6 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-  //
-  public function users()
-  {
-    $users = User::orderBy('created_at')->paginate(10);
-    return view('user/users', compact('users'));
-  }
-
   /**
    * Авторизация
    * https://laravel.su/docs/8.x/authentication

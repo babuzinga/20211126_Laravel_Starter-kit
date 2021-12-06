@@ -12,7 +12,7 @@ class MainController extends Controller
   {
     $validated = $request->validate([
       'email'   => 'required|min:4|max:100|email',
-      'message' => 'required|min:20|',
+      'message' => 'required|min:20',
     ]);
 
     $feedback = new Feedback();

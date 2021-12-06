@@ -21,13 +21,13 @@
     </a>
 
     <ul class="nav nav-pills">
-      <li class="nav-item"><a href="{{ route('user.users') }}"
-                              class="nav-link {{ (request()->is('users')) ? 'active' : '' }}"
-                              aria-current="page">Users</a></li>
       <li class="nav-item"><a href="{{ route('feedback') }}"
                               class="nav-link {{ (request()->is('feedback')) ? 'active' : '' }}">Feedback</a></li>
       <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
       @auth
+      <li class="nav-item"><a href="{{ route('task.list') }}"
+                              class="nav-link {{ (request()->is('tasks')) ? 'active' : '' }}"
+                              aria-current="page">Tasks</a></li>
       <li class="nav-item"><a href="{{ route('user.home') }}"
                               class="nav-link">Home</a></li>
       <li class="nav-item"><a href="{{ route('user.logout') }}"
