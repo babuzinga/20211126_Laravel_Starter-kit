@@ -11,4 +11,13 @@ class Task extends Model
 
   protected $keyType = 'string';
 
+  /**
+   * Извлечение владельца задачи
+   * https://laravel.com/docs/8.x/eloquent-relationships#one-to-many-inverse
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function owner()
+  {
+    return $this->belongsTo(User::class);
+  }
 }

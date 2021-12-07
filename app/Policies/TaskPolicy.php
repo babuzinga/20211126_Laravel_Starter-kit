@@ -30,7 +30,7 @@ class TaskPolicy
    */
   public function view(User $user, Task $task)
   {
-    return $user->isManager() || $user->id == $task->owner_uuid;
+    return $user->isManager() || $user->id == $task->owner_id;
   }
 
   /**
@@ -41,7 +41,7 @@ class TaskPolicy
    */
   public function create(User $user)
   {
-    return $user->isManager() || $user->id == $task->owner_uuid;
+
   }
 
   /**
@@ -53,7 +53,7 @@ class TaskPolicy
    */
   public function update(User $user, Task $task)
   {
-    return $user->isManager() || $user->id == $task->owner_uuid;
+    return $user->isManager() || $user->id == $task->owner_id;
   }
 
   /**
@@ -66,7 +66,7 @@ class TaskPolicy
   public function delete(User $user, Task $task)
   {
     //
-    return $user->isManager() || $user->id == $task->owner_uuid;
+    return $user->isManager() || $user->id == $task->owner_id;
   }
 
   /**

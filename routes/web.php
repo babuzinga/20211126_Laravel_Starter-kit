@@ -38,7 +38,6 @@ Route::name('admin.')->middleware('is_admin')->group(function () {
   Route::get('/dashboard',        [AdminController::class, 'dashboard'])->name('dashboard');
 });
 
-
 Route::name('task.')->middleware('auth')->group(function () {
   Route::get('/tasks',            [TaskController::class, 'tasks'])->name('list');
   Route::get('/task/create',      function () { return view('task/create'); })->name('create');

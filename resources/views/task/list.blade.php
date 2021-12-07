@@ -29,7 +29,7 @@
           <th scope="row">{{ ++$key }}</th>
           <td><a href="{{ route('task.view', ['task' => $task->id]) }}">{{ $task->title }}</a></td>
           @can('is_manager_project')
-            <td>1</td>
+            <td>{{ $task->owner->email }}</td>
           @endcan
           <td>{{ $task->created_at }}</td>
         </tr>

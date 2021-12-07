@@ -17,10 +17,10 @@ class TaskController extends Controller
   public function tasks()
   {
     $user = Auth::user();
-    if ($user->isManager()) {
+    if (!empty($user) && $user->isManager()) {
       $tasks = Task::orderBy('created_at')->paginate(10);
     } else {
-      $tasks = Task::where('owner_uuid', $user->id)->orderBy('created_at')->paginate(10);
+      $tasks = Task::where('owner_id', $user->id)->orderBy('created_at')->paginate(10);
     }
 
     return view('task/list', compact('tasks'));
@@ -40,7 +40,7 @@ class TaskController extends Controller
 
     $task = new Task();
     $task->id = Str::uuid();
-    $task->owner_uuid = Auth::id();
+    $task->owner_id = Auth::id();
     $task->title = $request->input('title');
     $task->task = $request->input('task');
 
