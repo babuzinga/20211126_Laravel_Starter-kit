@@ -24,10 +24,9 @@
       <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
       @auth
       <li class="nav-item"><a href="{{ route('task.list') }}"
-                              class="nav-link {{ (request()->is('tasks')) ? 'active' : '' }}"
-                              aria-current="page">Tasks</a></li>
+                              class="nav-link {{ (request()->is('tasks')) ? 'active' : '' }}">Tasks</a></li>
       <li class="nav-item"><a href="{{ route('user.home') }}"
-                              class="nav-link">Home</a></li>
+                              class="nav-link {{ (request()->is('home')) ? 'active' : '' }}">Home</a></li>
       <li class="nav-item"><a href="{{ route('user.logout') }}"
                               class="nav-link">Logout</a></li>
       @else
