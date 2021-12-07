@@ -53,4 +53,15 @@ class TaskController extends Controller
     $this->authorize('view', $task);
     return view('task/view', compact('task'));
   }
+
+  public function edit(Task $task)
+  {
+    $this->authorize('update', $task);
+    return view('task/create', compact('task'));
+  }
+
+  public function remove(Task $task)
+  {
+
+  }
 }

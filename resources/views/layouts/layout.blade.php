@@ -21,7 +21,8 @@
     </a>
 
     <ul class="nav nav-pills">
-      <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="{{ route('about') }}"
+                              class="nav-link">About</a></li>
       @auth
       <li class="nav-item"><a href="{{ route('task.list') }}"
                               class="nav-link {{ (request()->is('tasks')) ? 'active' : '' }}">Tasks</a></li>

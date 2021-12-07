@@ -14,4 +14,9 @@
   </blockquote>
 
   <small class="text-muted">created_at : {{ $task->created_at }}</small>
+
+  <div class="mt-3">
+    <a href="{{ route('task.edit', ['task' => $task->id]) }}" class="btn btn-primary">Edit</a>
+    <a href="{{ route('task.remove', ['task' => $task->id]) }}" onclick="confirm('Are you sure you want to delete?')" class="btn btn-danger">Remove</a>
+  </div>
 @endsection
