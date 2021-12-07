@@ -9,13 +9,28 @@ use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
-  //
+  /**
+   * Получение всех задач относящихся к авторизованному пользователю
+   * https://laravel.com/docs/8.x/eloquent-relationships#querying-belongs-to-relationships
+   * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+   */
   public function tasks()
   {
-    $tasks = Task::orderBy('created_at')->paginate(10);
+    $user = Auth::user();
+    if ($user->isManager()) {
+      $tasks = Task::orderBy('created_at')->paginate(10);
+    } else {
+      $tasks = Task::where('owner_uuid', $user->id)->orderBy('created_at')->paginate(10);
+    }
+
     return view('task/list', compact('tasks'));
   }
 
+  /**
+   * Добавление задачи
+   * @param Request $request
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function create(Request $request)
   {
     $validated = $request->validate([
@@ -31,5 +46,11 @@ class TaskController extends Controller
 
     $task->save();
     return redirect()->route('task.list');
+  }
+
+  public function view(Task $task)
+  {
+    $this->authorize('view', $task);
+    return view('task/view', compact('task'));
   }
 }

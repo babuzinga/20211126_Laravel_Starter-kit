@@ -11,14 +11,15 @@
     <a href="{{ route('task.create') }}" class="btn btn-primary mb-3">Create</a>
   </div>
 
-
   @if(count($tasks))
     <table class="table table-striped">
       <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
-        <th scope="col">Task</th>
+        @can('is_manager_project')
+          <th scope="col">Owner</th>
+        @endcan
         <th scope="col">created_at</th>
       </tr>
       </thead>
@@ -27,7 +28,9 @@
         <tr>
           <th scope="row">{{ ++$key }}</th>
           <td><a href="{{ route('task.view', ['task' => $task->id]) }}">{{ $task->title }}</a></td>
-          <td>{{ $task->task }}</td>
+          @can('is_manager_project')
+            <td>1</td>
+          @endcan
           <td>{{ $task->created_at }}</td>
         </tr>
       @endforeach

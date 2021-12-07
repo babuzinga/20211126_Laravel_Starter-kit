@@ -65,4 +65,9 @@ class User extends Authenticatable
   {
     return !empty($this->role) && $this->role == 'admin';
   }
+
+  public function isManager()
+  {
+    return !empty($this->role) && in_array($this->role, ['admin', 'manager']);
+  }
 }

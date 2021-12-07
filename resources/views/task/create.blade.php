@@ -32,6 +32,7 @@
       @error('task')
       <div class="invalid-feedback">{{ $message }}</div>
       @enderror
+      <div id="emailHelp" class="form-text">Enter a complete description of the task .</div>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
   </form>

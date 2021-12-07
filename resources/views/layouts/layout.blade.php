@@ -21,8 +21,6 @@
     </a>
 
     <ul class="nav nav-pills">
-      <li class="nav-item"><a href="{{ route('feedback') }}"
-                              class="nav-link {{ (request()->is('feedback')) ? 'active' : '' }}">Feedback</a></li>
       <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
       @auth
       <li class="nav-item"><a href="{{ route('task.list') }}"
