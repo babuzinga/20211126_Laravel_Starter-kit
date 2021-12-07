@@ -5,5 +5,9 @@
 @endsection
 
 @section('content')
-  Hello world!
+  {{ Breadcrumbs::render('index') }}
+
+  <h1>Hello world!</h1>
+
+
 @endsection

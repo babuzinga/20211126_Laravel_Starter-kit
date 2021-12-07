@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+  {{ Breadcrumbs::render('tasks') }}
+
   <h1>Tasks</h1>
 
   <div class="mt-3 mb-3">
