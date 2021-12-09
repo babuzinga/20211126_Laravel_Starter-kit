@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
+  const LIMIT = 5;
+
   /**
    * Получение всех задач относящихся к авторизованному пользователю
    * https://laravel.com/docs/8.x/eloquent-relationships#querying-belongs-to-relationships
@@ -18,9 +20,9 @@ class TaskController extends Controller
   {
     $user = Auth::user();
     if (!empty($user) && $user->isManager()) {
-      $tasks = Task::orderBy('created_at')->paginate(10);
+      $tasks = Task::orderBy('created_at')->paginate($this::LIMIT);
     } else {
-      $tasks = Task::where('owner_id', $user->id)->orderBy('created_at')->paginate(10);
+      $tasks = Task::where('owner_id', $user->id)->orderBy('created_at')->paginate($this::LIMIT);
     }
 
     return view('task/list', compact('tasks'));

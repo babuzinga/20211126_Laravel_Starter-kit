@@ -9,7 +9,7 @@
 
   @can('is_admin_project')
   <div class="mt-3">
-    <a href="{{ route('settings') }}">Admin dashboard</a>
+    <a href="{{ route('admin.dashboard') }}">Admin dashboard</a>
   </div>
   @endcan
 @endsection

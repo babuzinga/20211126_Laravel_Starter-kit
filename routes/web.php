@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -21,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',                       function () { return view('main/index'); })->name('index');
 Route::get('/about',                  function () { return view('main/about'); })->name('about');
-Route::get('/settings',               [MainController::class, 'settings'])->name('settings');
 
 Route::name('user.')->group(function () {
   Route::get('/users',                [UserController::class, 'users'])->name('users');
@@ -34,7 +32,7 @@ Route::name('user.')->group(function () {
   Route::get('/home',                 function () { return view('user/home'); })->middleware('auth')->name('home');
 });
 
-Route::name('admin.')->middleware('is_admin')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('is_admin')->group(function () {
   Route::get('/dashboard',            [AdminController::class, 'dashboard'])->name('dashboard');
 });
 
