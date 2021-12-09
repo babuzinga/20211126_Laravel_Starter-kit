@@ -19,10 +19,11 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
+        <th scope="col">created_at</th>
         @can('is_manager_project')
           <th scope="col">Owner</th>
+          <th scope="col">Control</th>
         @endcan
-        <th scope="col">created_at</th>
       </tr>
       </thead>
       <tbody>
@@ -30,10 +31,11 @@
         <tr>
           <th scope="row">{{ ++$key }}</th>
           <td><a href="{{ route('task.view', ['task' => $task->id]) }}">{{ $task->title }}</a></td>
+          <td>{{ $task->created_at }}</td>
           @can('is_manager_project')
             <td>{{ $task->owner->email }}</td>
+            <td>1</td>
           @endcan
-          <td>{{ $task->created_at }}</td>
         </tr>
       @endforeach
       </tbody>

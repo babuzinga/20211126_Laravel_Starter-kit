@@ -48,12 +48,46 @@ class TaskController extends Controller
     return redirect()->route('task.list');
   }
 
+  /**
+   * Обновление
+   * @param Request $request
+   * @param Task $task
+   * @return \Illuminate\Http\RedirectResponse
+   * @throws \Illuminate\Auth\Access\AuthorizationException
+   */
+  public function update(Request $request, Task $task)
+  {
+    $this->authorize('update', $task);
+    $validated = $request->validate([
+      'title'   => 'required|min:4|max:100',
+      'task'    => 'required|min:20',
+    ]);
+
+    $task->update([
+      'title'   => $request->input('title'),
+      'task'    => $request->input('task'),
+    ]);
+    return redirect()->route('task.view', ['task' => $task->id]);
+  }
+
+  /**
+   * Просмотр
+   * @param Task $task
+   * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+   * @throws \Illuminate\Auth\Access\AuthorizationException
+   */
   public function view(Task $task)
   {
     $this->authorize('view', $task);
     return view('task/view', compact('task'));
   }
 
+  /**
+   * Редактирование
+   * @param Task $task
+   * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+   * @throws \Illuminate\Auth\Access\AuthorizationException
+   */
   public function edit(Task $task)
   {
     $this->authorize('update', $task);

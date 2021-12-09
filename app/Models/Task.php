@@ -11,6 +11,13 @@ class Task extends Model
 
   protected $keyType = 'string';
 
+  protected $fillable = [
+    'title',
+    'task',
+    'status',
+    'updated_at',
+  ];
+
   /**
    * Извлечение владельца задачи
    * https://laravel.com/docs/8.x/eloquent-relationships#one-to-many-inverse

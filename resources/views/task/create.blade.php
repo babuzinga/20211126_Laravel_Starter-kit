@@ -6,10 +6,8 @@
 
 @section('content')
   <h1>@if (!empty($task)) Edit @else Create @endif task</h1>
-  <form action="{{ route('task.create') }}" method="post" class="mt-3">
+  <form action="@if (!empty($task)) {{ route('task.update', ['task' => $task->id]) }} @else {{ route('task.create') }} @endif" method="post" class="mt-3">
     @csrf
-
-    <input type="hidden" name="id" value="@isset($task) {{ $task->id }} @endempty">
 
     <div class="mb-3">
       <label for="exampleTitle" class="form-label">Title</label>
