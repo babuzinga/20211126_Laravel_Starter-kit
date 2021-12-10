@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  Registration
-@endsection
+@section('title', 'Registration')
 
 @section('content')
   <h1>Registration</h1>

@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  Registration
-@endsection
+@section('title', 'Login')
 
 @section('content')
   <h1>Authentication</h1>

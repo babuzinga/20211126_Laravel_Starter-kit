@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  blank
-@endsection
+@section('title', 'blank')
 
 @section('content')
   blank

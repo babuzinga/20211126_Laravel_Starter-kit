@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  Create task
-@endsection
+@section('title', 'Create task')
 
 @section('content')
   <h1>@if (!empty($task)) Edit @else Create @endif task</h1>

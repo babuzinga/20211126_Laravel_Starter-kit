@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  Tasks
-@endsection
+@section('title', 'Tasks')
 
 @section('content')
   {{ Breadcrumbs::render('tasks') }}

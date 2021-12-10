@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  Users
-@endsection
+@section('title', 'Users')
 
 @section('content')
   @if(count($users))

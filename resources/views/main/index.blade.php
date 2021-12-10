@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')
-  Index
-@endsection
+@section('title', 'Index')
 
 @section('content')
   {{ Breadcrumbs::render('index') }}

@@ -15,10 +15,18 @@
 <!-- https://getbootstrap.com/docs/5.1/examples/ -->
 <div class="container">
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    @env('local')
     <a href="https://laravel.com/docs/8.x/" target="_blank"
        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
       <span class="fs-4">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</span>
     </a>
+    @endenv
+
+    @production
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <span class="fs-4">PROJECT</span>
+    </a>
+    @endproduction
 
     <ul class="nav nav-pills">
       <li class="nav-item"><a href="{{ route('about') }}"
