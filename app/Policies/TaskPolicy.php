@@ -30,6 +30,9 @@ class TaskPolicy
    */
   public function view(User $user, Task $task)
   {
+    // Если задача имеет статус "Удалена", возвращается 404 ошибка
+    if ($task->isDelete()) abort(404);;
+
     return $user->isManager() || $user->id == $task->owner_id;
   }
 
